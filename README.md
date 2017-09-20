@@ -1,9 +1,6 @@
 # egg-qwatcher
 
 qunar watcher for egg
-<!--
-Description here.
--->
 
 ## Install
 
@@ -36,6 +33,7 @@ exports.qwatcher = {
     interval: '1m',
 };
 ```
+> 如果出现错误，会往 common-error.log 中记录，而不会抛出异常。
 
 see [config/config.default.js](config/config.default.js) for more detail.
 

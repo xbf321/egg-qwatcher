@@ -1,6 +1,6 @@
 {
   "name": "egg-qwatcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "qunar watcher for egg",
   "eggPlugin": {
     "name": "qwatcher",

@@ -4,16 +4,23 @@
  * 参考：https://eggjs.org/zh-cn/advanced/cluster-client.html
  */
 const QWatcher = require('./lib/qwatcher');
+const co = require('co');
 module.exports = app => {
     app.qwatcher = app.cluster(QWatcher).create(app.config.qwatcher);
 
-    app.beforeStart(function* () {
-        yield app.qwatcher.ready();
+    // 出现错误，记录到日志
+    app.qwatcher.on('error', err => {
+        app.coreLogger.error(`[egg-qwatcher] app ${err}`);
     });
-    app.messenger.on('qwatcher_clear', () => {
-        const ctx = app.createAnonymousContext();
-        ctx.runInBackground(function* () {
+
+    // 清掉缓存
+    app.qwatcher.on('clear', () => {
+        co(function* () {
             yield app.qwatcher.clear();
         });
+    });
+
+    app.beforeStart(function* () {
+        yield app.qwatcher.ready();
     });
 };
