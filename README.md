@@ -62,6 +62,10 @@ yield app.qwatcher.recordTime({
 
 Please open an issue [here](https://github.com/eggjs/egg/issues).
 
+## Version
+
+2.0.0版本以上为egg2版本插件
+
 ## License
 
 [MIT](LICENSE)
