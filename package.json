@@ -1,6 +1,6 @@
 {
   "name": "egg-qwatcher",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "qunar watcher for egg",
   "eggPlugin": {
     "name": "qwatcher",
@@ -20,7 +20,7 @@
   "devDependencies": {
     "autod": "^2.8.0",
     "autod-egg": "^1.0.0",
-    "egg": "^1.4.0",
+    "egg": "^2.0.0",
     "egg-bin": "^3.4.0",
     "egg-ci": "^1.6.0",
     "egg-mock": "^3.7.0",
@@ -30,7 +30,7 @@
     "webstorm-disable-index": "^1.2.0"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   },
   "scripts": {
     "test": "export DEBUG=qwatcher && npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
