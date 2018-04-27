@@ -5,20 +5,20 @@
  */
 const QWatcher = require('./lib/qwatcher');
 
-module.exports = app => {
-    app.qwatcher = app.cluster(QWatcher).create(app.config.qwatcher);
+module.exports = agent => {
+    agent.qwatcher = agent.cluster(QWatcher).create(agent.config.qwatcher);
 
     // 出现错误，记录到日志
-    app.qwatcher.on('error', err => {
-        app.coreLogger.error(`[egg-qwatcher] app ${err}`);
+    agent.qwatcher.on('error', err => {
+        agent.coreLogger.error(`[egg-qwatcher] agent ${err}`);
     });
 
     // 清掉缓存
-    app.qwatcher.on('clear', () => {
-        app.qwatcher.clear();
+    agent.qwatcher.on('clear', function () {
+        agent.qwatcher.clear();
     });
 
-    app.beforeStart(async function () {
-        await app.qwatcher.ready();
+    agent.beforeStart(async function () {
+        await agent.qwatcher.ready();
     });
 };
