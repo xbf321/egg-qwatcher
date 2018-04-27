@@ -65,3 +65,6 @@ Please open an issue [here](https://github.com/eggjs/egg/issues).
 ## License
 
 [MIT](LICENSE)
+
+## Version
+2.0.0版本以上为egg2版本插件
