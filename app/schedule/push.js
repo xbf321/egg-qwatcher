@@ -6,9 +6,9 @@ module.exports = app => {
             interval: app.config.qwatcher.interval || '1m',
             type: 'worker',
         },
-        * task(ctx) {
+        async task(ctx) {
             // 上报到服务器
-            yield ctx.app.qwatcher.send();
+            await ctx.app.qwatcher.send();
         },
     };
 };

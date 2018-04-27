@@ -4,7 +4,7 @@
  * 参考：https://eggjs.org/zh-cn/advanced/cluster-client.html
  */
 const QWatcher = require('./lib/qwatcher');
-const co = require('co');
+
 module.exports = app => {
     app.qwatcher = app.cluster(QWatcher).create(app.config.qwatcher);
 
@@ -15,12 +15,10 @@ module.exports = app => {
 
     // 清掉缓存
     app.qwatcher.on('clear', () => {
-        co(function* () {
-            yield app.qwatcher.clear();
-        });
+        app.qwatcher.clear();
     });
 
-    app.beforeStart(function* () {
-        yield app.qwatcher.ready();
+    app.beforeStart(async function () {
+        await app.qwatcher.ready();
     });
 };
